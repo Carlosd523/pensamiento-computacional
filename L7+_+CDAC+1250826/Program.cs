@@ -20,9 +20,50 @@ class Program
             {
                 Console.ForegroundColor = ConsoleColor.Green;
             }
+            // Salida de datos - Números del 1 al 20
             Console.WriteLine(indice);
             indice++;
         }
         Console.ForegroundColor = ConsoleColor.White;
+
+        // Problema #2 - Determinar los divisores positivos de un número
+
+        // Entrada de datos - Número entero
+        Console.WriteLine("Ingrese un número entero positivo");
+        string? numero = Console.ReadLine();
+        int entero = int.Parse(numero!);
+        int divisor = entero;
+
+        do
+        {
+            if(entero % divisor == 0)
+            {
+                // Salida de datos - Divisores
+                Console.WriteLine(divisor);
+            }
+            divisor--;
+        } while (divisor > 0);
+
+        // Problema #3 - Serie de Fibonacci
+
+        // Entrada de datos - Número n
+        Console.WriteLine("Ingrese n cantidad de números que desee ver de la serie de Fibonacci");
+        string? num = Console.ReadLine();
+        int n = int.Parse(num!);
+        int num1 = 0;
+        int num2 = 1;
+
+        Console.WriteLine(num1);
+        Console.WriteLine(num2);
+
+        int operaciones = n - 2;
+
+        for(int i = 0; i < operaciones; i++)
+        {
+            int resultado = num1 + num2;
+            Console.WriteLine(resultado);
+            num1 = num2;
+            num2 = resultado;
+        }
     }
 }
