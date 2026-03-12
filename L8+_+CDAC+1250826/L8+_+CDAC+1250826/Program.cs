@@ -35,5 +35,23 @@ class Program
         Console.WriteLine("El número más grande es " + num_mayor);
         Console.WriteLine("El número más pequeño es " + num_menor);
         Console.WriteLine("El promedio de todos los números es de " + promedio);
+
+        // Problema #2 - Números del 1 -100, múltiplos de 2, 7 y ambos
+
+        for(int i = 1; i <= 100; i++)
+        {
+            int numero = i;
+
+            if(numero % 2 == 0 && numero % 7 == 0)
+            {
+                Console.WriteLine("ParSiete");
+            }else if(numero % 2 == 0)
+            {
+                Console.WriteLine("Par");
+            }else if(numero % 7 == 0)
+            {
+                Console.WriteLine("Siete");
+            }
+        }
     }
 }
