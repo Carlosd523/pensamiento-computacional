@@ -53,5 +53,38 @@ class Program
                 Console.WriteLine("Siete");
             }
         }
+
+        // Problema #3 - Compras de un cliente
+
+        int compra = 0;
+        double cobro = 0;
+        double total = 0;
+        int contador = 0;
+
+        for(int i = 0; i < 10; i++)
+        {
+            Console.WriteLine("Ingrese el total de su compra");
+            string? dato = Console.ReadLine();
+            compra = int.Parse(dato!);
+
+            if(compra > 700)
+            {
+                cobro = compra * 0.88;
+                contador++;
+            }else if(compra > 300)
+            {
+                cobro = compra * 0.95;
+                contador++;
+            }
+            else
+            {
+                cobro = compra;
+            }
+            Console.WriteLine("El cliente pagó Q." + cobro);
+            total += cobro;
+        }
+
+        Console.WriteLine(contador + " personas recibiberon descuento");
+        Console.WriteLine("El total recaudado es de " + total);
     }
 }
