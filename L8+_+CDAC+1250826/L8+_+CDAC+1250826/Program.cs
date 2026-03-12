@@ -36,6 +36,10 @@ class Program
         Console.WriteLine("El número más pequeño es " + num_menor);
         Console.WriteLine("El promedio de todos los números es de " + promedio);
 
+        Console.WriteLine("Presione Enter para continuar");
+        Console.ReadLine();
+        Console.Clear();
+
         // Problema #2 - Números del 1 -100, múltiplos de 2, 7 y ambos
 
         for(int i = 1; i <= 100; i++)
@@ -53,6 +57,10 @@ class Program
                 Console.WriteLine("Siete");
             }
         }
+
+        Console.WriteLine("Presione Enter para continuar");
+        Console.ReadLine();
+        Console.Clear();
 
         // Problema #3 - Compras de un cliente
 
@@ -86,5 +94,84 @@ class Program
 
         Console.WriteLine(contador + " personas recibiberon descuento");
         Console.WriteLine("El total recaudado es de " + total);
+
+        Console.WriteLine("Presione Enter para continuar");
+        Console.ReadLine();
+        Console.Clear();
+
+        // Problema 4 - Solicitar un número y elegir una opción
+
+        int option_menu;
+        Console.WriteLine("Por favor ingrese un número");
+        string? dato2 = Console.ReadLine();
+        int num2 = int.Parse(dato2!);
+
+        Console.WriteLine("Seleccione una opción:" +
+            "\n 1: Mostrar los números desde el número ingresado hasta 1" +
+            "\n 2: Mostrar los múltiplos de 3 hasta el número ingresado" +
+            "\n 3: Mostrar los múltiplos de 5 hasta el número ingresado");
+
+        do
+        {
+            Console.WriteLine("Ingrese la opción que quiera");
+            string? option = Console.ReadLine();
+            option_menu = int.Parse(option!);
+
+            if(option_menu < 1 || option_menu > 3)
+            {
+                Console.WriteLine("Por favor ingrese un número válido");
+            }
+        } while (option_menu < 1 || option_menu > 3);
+
+        switch (option_menu)
+        {
+            case 1:
+                for(int i = num2; i >= 1; i--)
+                {
+                    Console.WriteLine(i);
+                }
+                break;
+
+            case 2:
+                for(int i = 1; i <= num2; i++)
+                {
+                    if(i % 3 == 0)
+                    {
+                        Console.WriteLine(i);
+                    }
+                }
+                break;
+
+            case 3:
+                for(int i = 1; i <= num2; i++)
+                {
+                    if(i % 5 == 0)
+                    {
+                        Console.WriteLine(i);
+                    }
+                }
+                break;
+        }
+
+        Console.WriteLine("Presione Enter para continuar");
+        Console.ReadLine();
+        Console.Clear();
+
+        //Problema 5 - Triángulo de asteriscos
+
+        Console.WriteLine("Ingrese el número de filas que quiera imprimir en el triángulo de asteriscos");
+        string? dato3 = Console.ReadLine();
+        int filas = int.Parse(dato3!);
+
+        string asterisco = "*";
+
+        for(int i = 1; i <= filas; i++)
+        {
+            for(int j = 1; j <= i; j++)
+            {
+                Console.Write(asterisco);
+            }
+            Console.WriteLine();
+        }
     }
 }
