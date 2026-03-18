@@ -15,6 +15,13 @@ class Program
         return (b, c);
     }
 
+    // Función - Problema #3
+    static double descuentoBoleto(double d, ref double e)
+    {
+        e = e * d;
+        return e;
+    }
+
     static void Main()
     {
         // Main - Problema #1
@@ -46,6 +53,57 @@ class Program
         Console.ReadLine();
         Console.Clear();
 
+        // Main - Problema #3
+        Console.WriteLine("BIENVENIDO A ANGULO'S CINEMA");
+        Console.WriteLine("Ingrese el precio del boleto");
+        string dato3 = Console.ReadLine()!;
+        double precio = double.Parse(dato3);
+        int edad = 0;
 
+        do
+        {
+            Console.WriteLine("Ingrese su edad");
+            string dato4 = Console.ReadLine()!;
+            edad = int.Parse(dato4);
+
+            if(edad < 0)
+            {
+                Console.WriteLine("Ingrese una edad válida");
+            }
+        } while (edad < 0);
+
+        double descuento = 1;
+
+        if(edad < 18)
+        {
+            Console.WriteLine("Usted tiene descuento del 5% por ser niño");
+            descuento -= 0.05;
+        }else if(edad >= 65)
+        {
+            Console.WriteLine("Usted tiene descuento del 10% por ser adulto mayor");
+            descuento -= 0.1;
+        }
+
+        int membresia = 0;
+
+        do
+        {
+            Console.WriteLine("¿Usted tiene membresía premium? 0 = No / 1 = Sí");
+            string dato5 = Console.ReadLine()!;
+            membresia = int.Parse(dato5);
+        } while (membresia < 0 || membresia > 1);
+
+        if(membresia == 1)
+        {
+            Console.WriteLine("Usted tiene descuento del 20%");
+            descuento -= 0.2;
+        }
+
+        Console.WriteLine("El valor actual de su boleto es: Q." + precio);
+        Console.WriteLine("El valor final de su boleto es: Q." + descuentoBoleto(descuento, ref precio));
+
+        Console.WriteLine("Presione Enter para continuar");
+        Console.ReadLine();
+        Console.Clear();
     }
 }
