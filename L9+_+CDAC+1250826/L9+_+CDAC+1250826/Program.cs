@@ -125,9 +125,8 @@ class Program
 
         // Main - Problema #3
         Console.WriteLine("BIENVENIDO A ANGULO'S CINEMA");
-        Console.WriteLine("Ingrese el precio del boleto");
-        string dato3 = Console.ReadLine()!;
-        double precio = double.Parse(dato3);
+        Console.WriteLine("El precio por boleto es de Q50.00");
+        double precio = 50;
         int edad = 0;
 
         do
@@ -151,7 +150,7 @@ class Program
         }else if(edad >= 65)
         {
             Console.WriteLine("Usted tiene descuento del 10% por ser adulto mayor");
-            descuento -= 0.1;
+            descuento -= 0.15;
         }
 
         int membresia = 0;
@@ -166,7 +165,7 @@ class Program
         if(membresia == 1)
         {
             Console.WriteLine("Usted tiene descuento del 20%");
-            descuento -= 0.2;
+            descuento -= 0.9;
         }
 
         Console.WriteLine("El valor actual de su boleto es: Q." + precio);
