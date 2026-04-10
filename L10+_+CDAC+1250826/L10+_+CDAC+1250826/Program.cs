@@ -15,61 +15,67 @@ class Program
     }
 
     // Función - Ejercicio #2
-    static double Retiro(ref double b, double c)
+    static string Correo(string b, string c, string d, string e)
     {
-        double monto = b;
-        if(b > c)
-        {
-            monto = b - c;
-        }
-        return monto;
+        string correo = "@correo.url.edu.gt";
+        correo = correo.Insert(0, e.Substring(0,1));
+        correo = correo.Insert(0, d);
+        correo = correo.Insert(0, c.Substring(0,1));
+        correo = correo.Insert(0, b.Substring(0,1));
+        correo = correo.ToLower();
+        return correo;
     }
 
     // Función - Ejercicio #3
-    static int Conversion(int d, ref int e)
+    static string Conversion(string f, ref string g)
     {
-        e = (d * 9 / 5) + 32;
-        return e;
+        string temperatura = f.Substring(4);
+        int temp = int.Parse(temperatura);
+        temp = (temp * 9 / 5) + 32;
+        string grados = temp.ToString();
+        g = g.Insert(4, grados);
+
+        return g;
     }
 
     // Funciones - Ejercicio #4
     // Función 4.1
-    static int agregarPuntos(ref int f)
+    static int agregarPuntos(ref int h)
     {
-        if(f <= 90)
+        if(h <= 90)
         {
-            f = f + 10;
-        }else if(f < 100)
+            h = h + 10;
+        }else if(h < 100)
         {
-            int unidad = f % 10;
-            f = f + (10 - unidad);
+            int unidad = h % 10;
+            h = h + (10 - unidad);
         }
-        return f;
+        return h;
     }
 
     // Función 4.2
-    static int quitarPuntos(ref int g)
+    static int quitarPuntos(ref int i)
     {
-        if(g >= 7)
+        if(i >= 7)
         {
-            g = g - 7;
+            i = i - 7;
         }
         else
         {
-            g = g - g;
+            i = i - i;
         }
-        return g;
+        return i;
     }
 
     // Función 4.3
-    static string obtenerNivel(int h)
+    static string obtenerNivel(int j)
     {
         string texto = "";
-        if(h <= 49)
+        if(j <= 49)
         {
             texto = "Básico";
             return texto;
-        }else if(h <= 79)
+        }else if(j <= 79)
         {
             texto = "Intermedio";
             return texto;
@@ -82,14 +88,14 @@ class Program
     }
 
     // Función 4.4
-    static string evaluarEstado(int i)
+    static string evaluarEstado(int k)
     {
         string texto = "";
-        if(i <= 69)
+        if(k <= 69)
         {
             texto = "Reprobado";
             return texto;
-        }else if(i <= 99)
+        }else if(k <= 99)
         {
             texto = "Aprobado";
             return texto;
@@ -124,35 +130,33 @@ class Program
         Console.Clear();
 
         // Ejercicio #2 - Saldo y retiro
-        double saldo = 10000.00;
-        Console.WriteLine("Su saldo actualmente es de: " + saldo);
-        double retiro = 0;
-        do
-        {
-            Console.WriteLine("Ingrese la cantidad de dinero que desea retirar");
-            string dato2 = Console.ReadLine()!;
-            retiro = double.Parse(dato2);
+        Console.WriteLine("Para creaar su correo institucional siga las siguientes indicaciones");
+        Console.WriteLine("Ingrese su primer nombre");
+        string first_name = Console.ReadLine()!;
+        Console.WriteLine("Ingrese su segundo nombre");
+        string second_name = Console.ReadLine()!;
+        Console.WriteLine("Ingrese su primer apellido");
+        string first_last_name = Console.ReadLine()!;
+        Console.WriteLine("Ingrese su segundo apellido");
+        string second_last_name = Console.ReadLine()!;
 
-            if(retiro < 0)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("¡ERROR! Número no valido");
-                Console.ResetColor();
-            }
-        } while (retiro < 0);
+        Console.WriteLine("Su correo institucional es: " + Correo(first_name, second_name, first_last_name, second_last_name));
 
-        Console.WriteLine("Su saldo actual es de: " + Retiro(ref saldo, retiro));
         Console.WriteLine("Presione Enter para continuar");
         Console.ReadLine();
         Console.Clear();
 
         // Ejercicio #3 - Conversión de temperatura
+        string grados_fahrenheit = "F = ";
+        string grados_celsius = "C = ";
         Console.WriteLine("Ingrese la temperatura en grados Celsius");
         string dato3 = Console.ReadLine()!;
-        int grados_celsius = int.Parse(dato3);
-        int grados_fahrenheit = 0;
+        int celsius = int.Parse(dato3);
+        string texto = celsius.ToString();
+        grados_celsius = grados_celsius.Insert(4, texto);
 
-        Console.WriteLine("La temperatura en grados Fahrenheit es de: " + Conversion(grados_celsius, ref grados_fahrenheit));
+        Console.WriteLine("A continuación se mostrará la temperatura en Fahrenheit" +
+            "\n" + Conversion(grados_celsius, ref grados_fahrenheit));
         Console.WriteLine("Presione Enter para continuar");
         Console.ReadLine();
         Console.Clear();
@@ -167,10 +171,10 @@ class Program
             {
                 Console.WriteLine("Ingrese qué desea hacer con los puntos del estudiante");
                 Console.WriteLine("1. AGREGAR PUNTOS" +
-                    "\n 2. QUITAR PUNTOS" +
-                    "\n 3. OBTENER NIVEL" +
-                    "\n 4. EVALUAR ESTADO" +
-                    "\n 5. SALIR");
+                    "\n2. QUITAR PUNTOS" +
+                    "\n3. OBTENER NIVEL" +
+                    "\n4. EVALUAR ESTADO" +
+                    "\n5. SALIR");
                 string dato4 = Console.ReadLine()!;
                 opt_menu = int.Parse(dato4);
 
