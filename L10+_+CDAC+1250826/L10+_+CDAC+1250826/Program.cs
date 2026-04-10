@@ -129,7 +129,7 @@ class Program
         Console.ReadLine();
         Console.Clear();
 
-        // Ejercicio #2 - Saldo y retiro
+        // Ejercicio #2 - Correos Universitarios
         Console.WriteLine("Para creaar su correo institucional siga las siguientes indicaciones");
         Console.WriteLine("Ingrese su primer nombre");
         string first_name = Console.ReadLine()!;
