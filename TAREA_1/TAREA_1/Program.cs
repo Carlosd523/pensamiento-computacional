@@ -155,5 +155,6 @@ class Program
         {
             Console.WriteLine("No existe un color en esa posición");
         }
+        limpiaPantalla();
     }
 }
