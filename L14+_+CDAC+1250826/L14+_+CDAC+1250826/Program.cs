@@ -19,7 +19,7 @@ class CuentaBancaria
     {
         Console.WriteLine("EL TITULAR DE LA CUENTA ES: " + Titular +
             "\nEL NUMERO DE CUENTA ES: " + NumeroCuenta +
-            "\nEL SALDO DE LA CUENTA ES: " + Saldo);
+            "\nEL SALDO DE LA CUENTA ES: Q" + Saldo);
     }
 
     // Subproceso #2
@@ -91,7 +91,7 @@ class Producto
     {
         Console.WriteLine("INFORMACIÓN DEL PRODUCTO" +
             "\nNOMBRE: " + Nombre +
-            "\nPRECIO" + Precio +
+            "\nPRECIO: Q" + Precio +
             "\nCANTIDAD DISPONIBLE: " + Cantidad);
     }
 
@@ -117,6 +117,7 @@ class Producto
         Cantidad -= cantidadVendida;
     }
 
+    // Subproceso #3
     public void Reabastecer()
     {
         bool valido = false;
@@ -136,6 +137,79 @@ class Producto
                 Console.WriteLine("Ingrese un valor válido");
         }
         Cantidad += cantidadReabastecida;
+    }
+}
+
+// Ejercicio #3 - Clase #1
+class Estudiante
+{
+    private string Nombre { get; set; }
+    private int Edad { get; set; }
+    private string Grado { get; set; }
+    private double[] Notas { get; set; }
+
+    public Estudiante(string nombre, int edad, string grado, double[] notas)
+    {
+        Nombre = nombre;
+        Edad = edad;
+        Grado = grado;
+        Notas = notas;
+    }
+
+    // Subproceso #1
+    public double CalcularPromedio()
+    {
+        double suma = 0;
+        for(int i = 0; i < Notas.Length; i++)
+            suma += Notas[i];
+        double promedio = suma / Notas.Length;
+        return promedio;
+    }
+
+    // Subproceso #2
+    public void MostrarInformación()
+    {
+        Console.WriteLine("INFORMACIÓN ESTUDIANTE" +
+            "\nNOMBRE DEL ESTUDIANTE: " + Nombre +
+            "\nEDAD: " + Edad +
+            "\nGRADO: " + Grado +
+            "\nNOTAS: ");
+        for (int i = 0; i < (Notas.Length); i++)
+            Console.WriteLine(Notas[i]);
+        Console.WriteLine("PROMEDIO: " + CalcularPromedio());
+    }
+
+    // Subproceso #3
+    public void Aprobar()
+    {
+        if (CalcularPromedio() >= 61)
+            Console.WriteLine("El estudiante aprobó");
+        else
+            Console.WriteLine("El estudiante reprobó");
+    }
+
+    // Subproceso #4
+    public void AgregarNota()
+    {
+        Console.WriteLine("Ingrese la nueva nota");
+        string dato = Console.ReadLine()!;
+        double nuevaNota;
+        double[] nuevoArreglo = new double[Notas.Length + 1];
+        if (double.TryParse(dato, out nuevaNota))
+        {
+            if (nuevaNota >= 0 && nuevaNota <= 100)
+            {
+                for (int i = 0; i < Notas.Length; i++)
+                    nuevoArreglo[i] = Notas[i];
+                nuevoArreglo[Notas.Length] = nuevaNota;
+                Notas = nuevoArreglo;
+                Console.WriteLine("El nuevo promedio es de: " + CalcularPromedio());
+            }
+            else
+                Console.WriteLine("Ingrese una nota válida");
+        }
+        else
+            Console.WriteLine("Ingrese un valor válido");
     }
 }
 class Program
@@ -182,5 +256,37 @@ class Program
         LimpiaPantalla();
         leche.Reabastecer();
         leche.MostrarInformacion();
+        LimpiaPantalla();
+
+        pan.MostrarInformacion();
+        LimpiaPantalla();
+        pan.Vender();
+        pan.MostrarInformacion();
+        LimpiaPantalla();
+        pan.Reabastecer();
+        pan.MostrarInformacion();
+        LimpiaPantalla();
+
+        // Ejercicio #3
+        Estudiante estudiante1 = new Estudiante("Daniel", 17, "Quinto Bachillerato", new double[] { 67.6, 45.7, 89.23, 56.56, 100.00, 34.67 });
+        Estudiante estudiante2 = new Estudiante("Andrea", 18, "Quinto Bachillerato", new double[] { 54.3, 23.5, 76.5, 32.3, 45.7, 80.1 });
+
+        estudiante1.MostrarInformación();
+        LimpiaPantalla();
+        estudiante2.MostrarInformación();
+        LimpiaPantalla();
+        estudiante1.Aprobar();
+        estudiante2.Aprobar();
+        LimpiaPantalla();
+        estudiante1.AgregarNota();
+        LimpiaPantalla();
+        estudiante2.AgregarNota();
+        LimpiaPantalla();
+        estudiante1.MostrarInformación();
+        LimpiaPantalla();
+        estudiante2.MostrarInformación();
+        LimpiaPantalla();
+        estudiante1.Aprobar();
+        estudiante2.Aprobar();
     }
 }
